@@ -18,6 +18,14 @@
 		2A5E926A27B15CA400E6EC2B /* QiitaSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E926927B15CA400E6EC2B /* QiitaSearchViewController.swift */; };
 		2A5E926C27B15CB200E6EC2B /* QiitaSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A5E926B27B15CB200E6EC2B /* QiitaSearch.storyboard */; };
 		2A5E926F27B15CE200E6EC2B /* Storyboard+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E926E27B15CE200E6EC2B /* Storyboard+.swift */; };
+		2A5E927227B15F9100E6EC2B /* QiitaSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E927127B15F9100E6EC2B /* QiitaSearchPresenter.swift */; };
+		2A5E927627B15FF300E6EC2B /* QiitaAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E927527B15FF300E6EC2B /* QiitaAPI.swift */; };
+		2A5E927827B1711800E6EC2B /* QiitaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E927727B1711800E6EC2B /* QiitaModel.swift */; };
+		2A5E927C27B17D6800E6EC2B /* QiitaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E927A27B17D6800E6EC2B /* QiitaTableViewCell.swift */; };
+		2A5E927D27B17D6800E6EC2B /* QiitaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A5E927B27B17D6800E6EC2B /* QiitaTableViewCell.xib */; };
+		2A5E928127B21E3400E6EC2B /* UITableViewCell+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E928027B21E3400E6EC2B /* UITableViewCell+.swift */; };
+		2A5E928927B3EA1D00E6EC2B /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A5E928827B3EA1D00E6EC2B /* Web.storyboard */; };
+		2A5E928B27B3ED2E00E6EC2B /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5E928A27B3ED2E00E6EC2B /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +61,14 @@
 		2A5E926927B15CA400E6EC2B /* QiitaSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaSearchViewController.swift; sourceTree = "<group>"; };
 		2A5E926B27B15CB200E6EC2B /* QiitaSearch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QiitaSearch.storyboard; sourceTree = "<group>"; };
 		2A5E926E27B15CE200E6EC2B /* Storyboard+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+.swift"; sourceTree = "<group>"; };
+		2A5E927127B15F9100E6EC2B /* QiitaSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaSearchPresenter.swift; sourceTree = "<group>"; };
+		2A5E927527B15FF300E6EC2B /* QiitaAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaAPI.swift; sourceTree = "<group>"; };
+		2A5E927727B1711800E6EC2B /* QiitaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaModel.swift; sourceTree = "<group>"; };
+		2A5E927A27B17D6800E6EC2B /* QiitaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaTableViewCell.swift; sourceTree = "<group>"; };
+		2A5E927B27B17D6800E6EC2B /* QiitaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QiitaTableViewCell.xib; sourceTree = "<group>"; };
+		2A5E928027B21E3400E6EC2B /* UITableViewCell+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+.swift"; sourceTree = "<group>"; };
+		2A5E928827B3EA1D00E6EC2B /* Web.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
+		2A5E928A27B3ED2E00E6EC2B /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,9 +124,13 @@
 				2A5E924027B14C4600E6EC2B /* Assets.xcassets */,
 				2A5E924227B14C4600E6EC2B /* LaunchScreen.storyboard */,
 				2A5E924527B14C4600E6EC2B /* Info.plist */,
+				2A5E927927B1712200E6EC2B /* Model */,
+				2A5E927E27B17D7100E6EC2B /* View */,
 				2A5E926D27B15CB600E6EC2B /* ViewController */,
-				2A5E926727B15B1900E6EC2B /* Router.swift */,
-				2A5E926E27B15CE200E6EC2B /* Storyboard+.swift */,
+				2A5E927027B15F7500E6EC2B /* Presenter */,
+				2A5E927327B15FBC00E6EC2B /* Router */,
+				2A5E927427B15FC400E6EC2B /* Extension */,
+				2A5E927F27B17D8A00E6EC2B /* Utility */,
 			);
 			path = SampleMVP;
 			sourceTree = "<group>";
@@ -135,10 +155,86 @@
 		2A5E926D27B15CB600E6EC2B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				2A5E928C27B3F4D900E6EC2B /* QiitaSearchViewController */,
+				2A5E928D27B3F4E900E6EC2B /* WebViewController */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		2A5E927027B15F7500E6EC2B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E927127B15F9100E6EC2B /* QiitaSearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		2A5E927327B15FBC00E6EC2B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E926727B15B1900E6EC2B /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		2A5E927427B15FC400E6EC2B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E926E27B15CE200E6EC2B /* Storyboard+.swift */,
+				2A5E928027B21E3400E6EC2B /* UITableViewCell+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		2A5E927927B1712200E6EC2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E927727B1711800E6EC2B /* QiitaModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2A5E927E27B17D7100E6EC2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E928E27B3F4F900E6EC2B /* QiitaTableViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2A5E927F27B17D8A00E6EC2B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E927527B15FF300E6EC2B /* QiitaAPI.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		2A5E928C27B3F4D900E6EC2B /* QiitaSearchViewController */ = {
+			isa = PBXGroup;
+			children = (
 				2A5E926927B15CA400E6EC2B /* QiitaSearchViewController.swift */,
 				2A5E926B27B15CB200E6EC2B /* QiitaSearch.storyboard */,
 			);
-			path = ViewController;
+			path = QiitaSearchViewController;
+			sourceTree = "<group>";
+		};
+		2A5E928D27B3F4E900E6EC2B /* WebViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E928827B3EA1D00E6EC2B /* Web.storyboard */,
+				2A5E928A27B3ED2E00E6EC2B /* WebViewController.swift */,
+			);
+			path = WebViewController;
+			sourceTree = "<group>";
+		};
+		2A5E928E27B3F4F900E6EC2B /* QiitaTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				2A5E927A27B17D6800E6EC2B /* QiitaTableViewCell.swift */,
+				2A5E927B27B17D6800E6EC2B /* QiitaTableViewCell.xib */,
+			);
+			path = QiitaTableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +343,8 @@
 			files = (
 				2A5E924427B14C4600E6EC2B /* LaunchScreen.storyboard in Resources */,
 				2A5E924127B14C4600E6EC2B /* Assets.xcassets in Resources */,
+				2A5E928927B3EA1D00E6EC2B /* Web.storyboard in Resources */,
+				2A5E927D27B17D6800E6EC2B /* QiitaTableViewCell.xib in Resources */,
 				2A5E926C27B15CB200E6EC2B /* QiitaSearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -273,9 +371,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A5E923827B14C4500E6EC2B /* AppDelegate.swift in Sources */,
+				2A5E928B27B3ED2E00E6EC2B /* WebViewController.swift in Sources */,
+				2A5E928127B21E3400E6EC2B /* UITableViewCell+.swift in Sources */,
 				2A5E926827B15B1900E6EC2B /* Router.swift in Sources */,
+				2A5E927627B15FF300E6EC2B /* QiitaAPI.swift in Sources */,
 				2A5E923A27B14C4500E6EC2B /* SceneDelegate.swift in Sources */,
+				2A5E927827B1711800E6EC2B /* QiitaModel.swift in Sources */,
+				2A5E927227B15F9100E6EC2B /* QiitaSearchPresenter.swift in Sources */,
 				2A5E926F27B15CE200E6EC2B /* Storyboard+.swift in Sources */,
+				2A5E927C27B17D6800E6EC2B /* QiitaTableViewCell.swift in Sources */,
 				2A5E926A27B15CA400E6EC2B /* QiitaSearchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

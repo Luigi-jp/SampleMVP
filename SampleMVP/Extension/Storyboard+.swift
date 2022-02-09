@@ -12,4 +12,8 @@ extension UIStoryboard {
     static var qiitaSearchViewController: QiitaSearchViewController {
         UIStoryboard(name: "QiitaSearch", bundle: nil).instantiateInitialViewController() as! QiitaSearchViewController
     }
+
+    static var webViewController: WebViewController {
+        UIStoryboard(name: "Web", bundle: nil).instantiateInitialViewController() as! WebViewController
+    }
 }
