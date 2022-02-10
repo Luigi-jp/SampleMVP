@@ -8,9 +8,9 @@
 import UIKit
 
 final class QiitaSearchViewController: UIViewController {
-    
-    private var qiitaModels: [QiitaModel] = []
 
+    private var presenter: QiitaSearchPresenterInput!
+    
     @IBOutlet private weak var indicator: UIActivityIndicatorView!
     @IBOutlet private weak var searchBar: UISearchBar! {
         didSet {
@@ -24,42 +24,53 @@ final class QiitaSearchViewController: UIViewController {
             tableView.delegate = self
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
         indicator.isHidden = true
+        tableView.isHidden = true
+    }
+
+    func inject(with presenter: QiitaSearchPresenterInput) {
+        self.presenter = presenter
+    }
+}
+
+extension QiitaSearchViewController: QiitaSearchPresenterOutput {
+    func update(loding: Bool) {
+        DispatchQueue.main.async {
+            self.indicator.isHidden = !loding
+            self.tableView.isHidden = loding
+        }
+    }
+
+    func didFetch(qiitaModels: [QiitaModel]) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+    func failToFetch(error: Error) {
+        DispatchQueue.main.async {
+            self.showError(title: "エラー", message: error.localizedDescription)
+        }
     }
 }
 
 extension QiitaSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        indicator.isHidden = false
-        tableView.isHidden = true
-        guard let searchWord = searchBar.text else { return }
-        QiitaAPI.shared.requestPosts(searchWord: searchWord) { result in
-            DispatchQueue.main.async {
-                self.indicator.isHidden = true
-                self.tableView.isHidden = false
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let qiitaResponse):
-                    self.qiitaModels = qiitaResponse
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        searchBar.resignFirstResponder()
+        presenter.search(searchWord: searchBar.text)
     }
 }
 
 extension QiitaSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return qiitaModels.count
+        return presenter.numberOfItems
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let qiitaModel = qiitaModels[indexPath.row]
+        let qiitaModel = presenter.item(index: indexPath.row)
         let cell = tableView.dequeueReusableCell(withIdentifier: QiitaTableViewCell.identifier, for: indexPath) as! QiitaTableViewCell
         cell.configure(qiitaModel: qiitaModel)
         return cell
@@ -68,7 +79,8 @@ extension QiitaSearchViewController: UITableViewDataSource {
 
 extension QiitaSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let qiitaModel = qiitaModels[indexPath.row]
-        Router.shared.showWeb(from: self, url: qiitaModel.url)
+        tableView.deselectRow(at: indexPath, animated: true)
+        let qiitaModel = presenter.item(index: indexPath.row)
+        Router.shared.showWeb(from: self, qiitaModel: qiitaModel)
     }
 }

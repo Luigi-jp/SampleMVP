@@ -9,20 +9,23 @@ import UIKit
 import WebKit
 
 final class WebViewController: UIViewController {
-    static func makeFromStoryboard(url: URL?) -> WebViewController {
-        let vc = UIStoryboard.webViewController
-        vc.url = url
-        return vc
-    }
-    
-    private var url: URL?
+
+    private var presenter: WebInput!
 
     @IBOutlet private weak var webView: WKWebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewDidload()
+    }
 
-        guard let url = url else { return }
-        webView.load(URLRequest(url: url))
+    func inject(with presenter: WebInput) {
+        self.presenter = presenter
+    }
+}
+
+extension WebViewController: WebOutput {
+    func load(request: URLRequest) {
+        webView.load(request)
     }
 }

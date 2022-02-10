@@ -13,13 +13,17 @@ struct QiitaAPIParameters {
     let perPage: Int = 20
 }
 
-final class QiitaAPI {
+protocol QiitaAPIInput: AnyObject {
+    func fetch(searchWord: String, completion: @escaping ((Result<[QiitaModel], Error>) -> Void))
+}
+
+final class QiitaAPI: QiitaAPIInput {
     static let shared = QiitaAPI()
     private init() {}
     
-    func requestPosts(searchWord: String, completion: @escaping ((Result<[QiitaModel], Error>) -> Void)) {
+    func fetch(searchWord: String, completion: @escaping ((Result<[QiitaModel], Error>) -> Void)) {
         guard !searchWord.isEmpty, searchWord.count > 0 else { return }
-        guard let url = URL(string: "https://qiita.com/api/v2/items?page=1&per_page=1&query=\(searchWord)") else { return }
+        guard let url = URL(string: "https://qiita.com/api/v2/items?page=1&per_page=20&query=\(searchWord)") else { return }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {

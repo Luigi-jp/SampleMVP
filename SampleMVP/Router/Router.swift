@@ -14,14 +14,18 @@ class Router {
     
     func showRoot(window: UIWindow) {
         let vc = UIStoryboard.qiitaSearchViewController
+        let presenter = QiitaSearchPresenter(output: vc)
+        vc.inject(with: presenter)
         let nav = UINavigationController(rootViewController: vc)
         window.rootViewController = nav
         window.makeKeyAndVisible()
     }
 
-    func showWeb(from: UIViewController, url: URL?) {
-        let nextVc = WebViewController.makeFromStoryboard(url: url)
-        show(from: from, next: nextVc)
+    func showWeb(from: UIViewController, qiitaModel: QiitaModel) {
+        let vc = UIStoryboard.webViewController
+        let presenter = WebPresenter(output: vc, qiitaModel: qiitaModel)
+        vc.inject(with: presenter)
+        show(from: from, next: vc)
     }
 }
 
