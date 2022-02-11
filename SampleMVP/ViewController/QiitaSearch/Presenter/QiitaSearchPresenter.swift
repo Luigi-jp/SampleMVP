@@ -10,7 +10,7 @@ import Foundation
 protocol QiitaSearchPresenterInput: AnyObject {
     var numberOfItems: Int { get }
     func item(index: Int) -> QiitaModel
-    func search(searchWord: String?)
+    func search(parameter: QiitaAPIParameters)
 }
 
 protocol QiitaSearchPresenterOutput: AnyObject {
@@ -40,17 +40,16 @@ extension QiitaSearchPresenter: QiitaSearchPresenterInput {
         return qiitaModels[index]
     }
     
-    func search(searchWord: String?) {
-        guard let searchWord = searchWord, searchWord.count > 0 else { return }
+    func search(parameter: QiitaAPIParameters) {
         output.update(loding: true)
-        apiInput.fetch(searchWord: searchWord) { result in
-            self.output.update(loding: false)
+        apiInput.fetch(parameter: parameter) { [weak self] result in
+            self?.output.update(loding: false)
             switch result {
             case .failure(let error):
-                self.output.failToFetch(error: error)
+                self?.output.failToFetch(error: error)
             case .success(let qiitaResponse):
-                self.qiitaModels = qiitaResponse
-                self.output.didFetch(qiitaModels: self.qiitaModels)
+                self?.qiitaModels = qiitaResponse
+                self?.output.didFetch(qiitaModels: qiitaResponse)
             }
         }
     }

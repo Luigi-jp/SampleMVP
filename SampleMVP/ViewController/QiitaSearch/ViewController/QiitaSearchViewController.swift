@@ -60,7 +60,8 @@ extension QiitaSearchViewController: QiitaSearchPresenterOutput {
 extension QiitaSearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        presenter.search(searchWord: searchBar.text)
+        let parameter = QiitaAPIParameters(searchWord: searchBar.text)
+        presenter.search(parameter: parameter)
     }
 }
 
